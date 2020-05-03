@@ -18,24 +18,24 @@ int main()
     pqxx::work txn(connect);
     pqxx::result contenedor = txn.exec(
         "SELECT *"
-        "FROM puntaje"
+        "FROM puntajes"
     );
 
     for(int i=0; i<contenedor.size(); i++)
     {
-        rut=contenedor[i][0].as<std::string>();
+        rut=contenedor[i][1].as<std::string>();
 
-        nem=contenedor[i][1].as<std::string>();
+        nem=contenedor[i][2].as<std::string>();
         std::istringstream(nem) >> nemn;
-        ranking=contenedor[i][2].as<std::string>();
+        ranking=contenedor[i][3].as<std::string>();
         std::istringstream(ranking) >> rankingn;
-        matematicas=contenedor[i][3].as<std::string>();
+        matematicas=contenedor[i][4].as<std::string>();
         std::istringstream(matematicas) >> matematicasn;
-        lenguaje=contenedor[i][4].as<std::string>();
+        lenguaje=contenedor[i][5].as<std::string>();
         std::istringstream(lenguaje) >> lenguajen;
-        ciencias=contenedor[i][5].as<std::string>();
+        ciencias=contenedor[i][6].as<std::string>();
         std::istringstream(ciencias) >> cienciasn;
-        historia=contenedor[i][6].as<std::string>();
+        historia=contenedor[i][7].as<std::string>();
         std::istringstream(historia) >> historian;
 
         promedio=double((nemn+rankingn+matematicasn+lenguajen+cienciasn+historian)/6);
