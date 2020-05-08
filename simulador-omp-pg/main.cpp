@@ -10,6 +10,7 @@ using namespace std;
 int main(int argc, char** argv) 
 {
     int ,n_campos,n_filas,promedio=0,dato=0;
+    string datin;
     
     std::ofstream archivo ("Promedio.csv");
     PGconn* conexion = dbconnect((char *) DBSERVER, DBPORT, (char *) DBNAME, (char *) DBUSER, (char *) DBPASSWORD);
@@ -20,7 +21,8 @@ int main(int argc, char** argv)
     {
         for(j=1; j<PQnfields(resultado;j++)
         {
-            std::istringstream(PQgetvalue(resultado, i, j)) >> dato;
+            datin=PQgetvalue(resultado, i, j);
+            std::istringstream(datin) >> dato;
             promedio+=dato;
             dato=0;
         }
