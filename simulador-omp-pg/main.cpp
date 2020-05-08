@@ -7,20 +7,23 @@ using namespace std;
 
 int main(int argc, char** argv) 
 {
+    int ,n_campos,n_filas,promedio=0,dato=0;
+    
+    ofstream archivo ("Promedio.csv");
     PGconn* conexion = dbconnect((char *) DBSERVER, DBPORT, (char *) DBNAME, (char *) DBUSER, (char *) DBPASSWORD);
     std:: string query="SELECT rut,nem,ranking,matematicas,lenguaje,ciencias,historia FROM puntajes ORDER BY rut");
     PGresult* resultado = dbquery(conexion, (char *) query.c_str());
     
-    for (unsigned long rut = 14916641; rut <= 19932391; rut++)
+    for (i=0; i<PQnTuples(resultado);i++)
     {
-        int nem = aleatoreo(475, 750);
-        int ranking = aleatoreo(475, 750);
-        int matematica = aleatoreo(475, 750);
-        int lenguaje = aleatoreo(475, 750);
-        int ciencias = aleatoreo(475, 750);
-        int historia = aleatoreo(475, 750);
-            std::string linea;
-            dbfree(resultado);
+        for(j=2; j<PQnfields(resultado;j++)
+        {
+            std::istringstream(PQgetvalue(resultado, i, j)) >> dato;
+            promedio+=dato;
+        }
+        promedio=(promedio/6);
+        archivo<<PQgetvalue(resultado, i, 1))<<";"<<promedio<<endl;
+        promedio=0;
     }
     dbclose(conexion);
 }
