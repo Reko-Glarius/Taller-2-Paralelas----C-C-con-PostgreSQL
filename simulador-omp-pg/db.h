@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-#define DBSERVER "192.168.17.126"
+#define DBSERVER "127.0.0.1"
 #define DBPORT 5432
 #define DBNAME "psudb"
 #define DBUSER "psu"
