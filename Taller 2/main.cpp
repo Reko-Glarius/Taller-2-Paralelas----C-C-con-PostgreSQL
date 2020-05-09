@@ -14,7 +14,6 @@ int main(int argc, char** argv)
     
     std::ofstream archivo ("promedio.csv");
     PGconn* conexion = dbconnect((char *) DBSERVER, DBPORT, (char *) DBNAME, (char *) DBUSER, (char *) DBPASSWORD);
-    cout << "hola" << std::endl;
     std::string query="SELECT rut,nem,ranking,matematica,lenguaje,ciencias,historia FROM puntajes ORDER BY rut";
     PGresult* resultado = dbquery(conexion, (char *) query.c_str());
     
@@ -27,7 +26,6 @@ int main(int argc, char** argv)
             promedio+=dato;
             dato=0;
         }
-        cout << "mundo" << std::endl;
         promedio=(promedio/6);
         archivo<<PQgetvalue(resultado, i, 0)<<";"<<promedio<<endl;
         promedio=0;
